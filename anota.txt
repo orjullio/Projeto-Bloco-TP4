@@ -1,0 +1,56 @@
+                    Capturando informações básicas do computador em Python
+
+Definições da tela Pygame
+
+    largura_tela = 800
+    altura_tela = 600
+    tela = pygame.display.set_mode((largura_tela, altura_tela))
+    pygame.display.set_caption("Uso de memória")
+
+Escreve texto na barra
+
+    pygame.font.init()
+    font = pygame.font.Font(None, 32)
+
+Define a largura da barra:
+
+    mem = psutil.virtual_memory()
+    larg = largura_tela - 2*20
+
+Configura a segunda barra
+
+    larg = larg*mem.percent/100
+    pygame.draw.rect(tela, vermelho, (20, 50, larg, 70))
+
+
+Desenhando os textos de cor branca
+
+
+
+
+
+
+
+
+                                            SUPERFICIES PYGAME - SURFACE
+
+Ajuda a organizar as superfícies. O surface permite criar subjanelas poscionadas dentro de uma janela principal. Basta criar
+e indicar onde ela vai ser posicionada dentro da tela principal.
+
+Criando uma surface:
+
+                s_mem = pygame.surface.Surface((800, 200))
+
+Depois de criada, a superfície pode ser usada como se fosse uma janela. Isso seria útil para criar 3 superfícies e colocá-las uma
+a baixo da outra. 
+
+
+
+
+
+
+
+    total = round(mem.total/(1024*1024*1024),2)
+    texto_barra = "Uso de Memória (Total: " + str(total) + "GB):"
+    text = font.render(texto_barra, 1, branco)
+    tela.blit(text, (20, 10))
